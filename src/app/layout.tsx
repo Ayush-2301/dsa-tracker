@@ -1,8 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import { Figtree } from 'next/font/google'
+import { ThemeProvider } from '@/components/theme-provider'
+import Navbar from '../components/Navigation/Navbar'
+import { ReduxProvider } from '@/redux/provider'
+const font = Figtree({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +17,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${font.className} mx-auto md:px-36 md:py-12 sm:px-12 sm:py-8 px-6 py-6`}>
+        <ReduxProvider>
+        <ThemeProvider attribute='class' defaultTheme="system" enableSystem>
+        <Navbar/>
+        {children}
+        </ThemeProvider>
+        </ReduxProvider>
+        </body>
     </html>
   )
 }
