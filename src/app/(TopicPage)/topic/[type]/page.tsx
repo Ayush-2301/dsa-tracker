@@ -1,3 +1,5 @@
+import TopicServer from "@/components/Topic/TopicServer";
+
 export default function TopicPage({ params }: { params: { type: string } }) {
-  return <div>{params.type}</div>;
+  return <TopicServer params={params} />;
 }

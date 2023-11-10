@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
+import { typeOrder } from "@/lib/constants";
 import { PostgrestError, User, UserMetadata } from "@supabase/supabase-js";
 import HomeCard from "./HomeCard";
 import QuestionCard from "./QuestionCard";
@@ -67,30 +68,10 @@ export default function HomeClient({
   const groupData = groupDatabyType();
 
   const sortedGroupData = useMemo(() => {
-    const typeOrder = [
-      "Array",
-      "Matrix",
-      "String",
-      "Searching & Sorting",
-      "LinkedList",
-      "Binary Trees",
-      "Binary Search Trees",
-      "Greedy",
-      "BackTracking",
-      "Stacks & Queues",
-      "Heap",
-      "Graph",
-      "Trie",
-      "Dynamic Programming",
-      "Bit Manipulation",
-    ];
-
     return typeOrder.map((type) =>
       groupData.find((group) => group.type === type)
     );
   }, [groupData]);
-
-  // console.log(sortedGroupData);
 
   const QuestionCards = () => {
     return (

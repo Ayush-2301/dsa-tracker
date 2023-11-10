@@ -33,7 +33,6 @@ export default async function HomeServer() {
   } = await supabase
     .from("Questions")
     .select("*")
-
     .in("id", userQuestionDoneId || []);
 
   return (

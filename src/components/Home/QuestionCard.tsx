@@ -29,7 +29,9 @@ export default function QuestionCard({ type, data }: props) {
           <p className="text-3xl font-bold">Topic : {type}</p>
           <div className="space-y-2 text-lg font-semibold">
             <p>Total no. of questions : {data.length}</p>
-            <p>{data.length - calculateProgress()} More to go</p>
+            <p className="text-brand">
+              {data.length - calculateProgress()} More to go
+            </p>
           </div>
         </div>
         <CircularProgressBar
